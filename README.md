@@ -1,6 +1,6 @@
 # GrouponApi
 
-TODO: Write a gem description
+Groupon API gem
 
 ## Installation
 
