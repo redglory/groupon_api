@@ -1,3 +1,4 @@
+groupon_api-*.gem
 /.bundle/
 /.yardoc
 /Gemfile.lock
