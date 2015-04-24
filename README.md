@@ -1,4 +1,5 @@
 # GrouponApi
+[![Gem Version](https://badge.fury.io/rb/groupon_api.svg)](http://badge.fury.io/rb/groupon_api)
 
 Groupon API gem
 
