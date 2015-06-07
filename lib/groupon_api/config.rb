@@ -4,6 +4,7 @@ module GrouponApi
   # configure GrouponApi global settings
   #   GrouponApi.configure do |config|
   #     config.ts_token = 'US_AFF_0_201236_212556_0'
+  #     config.debug = true
   #   end
   def self.configure &block
     yield @config ||= GrouponApi::Configuration.new
@@ -19,6 +20,7 @@ module GrouponApi
 
     config_accessor(:ts_token){ nil }
     config_accessor(:use_ssl){ true }
+    config_accessor(:debug){ false }
     
     #deals
     config_accessor(:deals){ {} }
