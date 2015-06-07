@@ -8,6 +8,6 @@ module GrouponApi
     
     puts "#{__FILE__}:#{__LINE__} params: #{params}" if GrouponApi.config.debug
 
-    GrouponApi::Request.call('deals', params)
+    GrouponApi::Request.call('deals', params)['deals'].collect{|deal| HashWithIndifferentAccess.new(deal)}
   end
 end

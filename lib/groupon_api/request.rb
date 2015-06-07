@@ -28,7 +28,7 @@ module GrouponApi
       json = JSON.parse(result)
       puts "#{__FILE__}:#{__LINE__} json:" if GrouponApi.config.debug
       puts "#{json}" if GrouponApi.config.debug
-      json['deals'].collect{|deal| HashWithIndifferentAccess.new(deal)}
+      json
     end
   end
 end
