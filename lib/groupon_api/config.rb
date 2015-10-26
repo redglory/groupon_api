@@ -21,6 +21,8 @@ module GrouponApi
     config_accessor(:ts_token){ nil }
     config_accessor(:use_ssl){ true }
     config_accessor(:debug){ false }
+    config_accessor(:use_int){ false }
+    config_accessor(:iso_code){ nil }
     
     #deals
     config_accessor(:deals){ {} }

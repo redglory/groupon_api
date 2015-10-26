@@ -1,0 +1,64 @@
+#------------------------------------------------------------------------------------
+# Country               ISO Code  Division API
+#------------------------------------------------------------------------------------
+# Argentina             AR        http://api.groupon.de/api/v1/cities/AR.json
+# Austria               AT        http://api.groupon.de/api/v1/cities/AT.json
+# Australia             AU        http://api-asia.groupon.de/api/mobile/au/divisions
+# Belgium               BE        http://api.groupon.de/api/v1/cities/BE.json
+# Brazil                BR        http://api.groupon.de/api/v1/cities/BR.json
+# Denmark               DK        http://api.groupon.de/api/v1/cities/DK.json
+# Finland               FI        http://api.groupon.de/api/v1/cities/FI.json
+# France                FR        http://api.groupon.de/api/v1/cities/FR.json
+# Germany               DE        http://api.groupon.de/api/v1/cities/DE.json
+# Greece                GR        http://api.groupon.de/api/v1/cities/GR.json
+# India                 IN        http://api.groupon.co.in/api/mobile/in/divisions
+# Ireland               IE        http://api.groupon.de/api/v1/cities/IE.json
+# Israel                IL        http://api.groupon.de/api/v1/cities/IL.json
+# Italy                 IT        http://api.groupon.de/api/v1/cities/IT.json
+# Malaysia              MY        http://api-asia.groupon.de/api/mobile/my/divisions
+# Netherlands           NL        http://api.groupon.de/api/v1/cities/NL.json
+# New Zealand           NZ        http://api-asia.groupon.de/api/mobile/nz/divisions
+# Norway                NO        http://api.groupon.de/api/v1/cities/NO.json
+# Philippines           PH        http://api-asia.groupon.de/api/mobile/ph/divisions
+# Portugal              PT        http://api.groupon.de/api/v1/cities/PT.json
+# Romania               RO        http://api.groupon.de/api/v1/cities/RO.json
+# Singapore             SG        http://api-asia.groupon.de/api/mobile/sg/divisions
+# South Africa          ZA        http://api.groupon.de/api/v1/cities/ZA.json
+# Spain                 ES        http://api.groupon.de/api/v1/cities/ES.json
+# Sweden                SE        http://api.groupon.de/api/v1/cities/SE.json
+# Switzerland           CH        http://api.groupon.de/api/v1/cities/CH.json
+# Thailand              TH        http://api-asia.groupon.de/api/mobile/th/divisions
+# Turkey                TR        http://api.groupon.de/api/v1/cities/TR.json
+# United Arab Emirates  AE        http://api.groupon.de/api/v1/cities/AE.json
+# United Kingdom        UK        http://api.groupon.de/api/v1/cities/UK.json
+#-----------------------------------------------------------------------------------
+"AR": "api.groupon.de/api/v1/cities/AR.json"
+"AT": "api.groupon.de/api/v1/cities/AT.json"
+"AU": "api-asia.groupon.de/api/mobile/au/divisions"
+"BE": "api.groupon.de/api/v1/cities/BE.json"
+"BR": "api.groupon.de/api/v1/cities/BR.json"
+"DK": "api.groupon.de/api/v1/cities/DK.json"
+"FI": "api.groupon.de/api/v1/cities/FI.json"
+"FR": "api.groupon.de/api/v1/cities/FR.json"
+"DE": "api.groupon.de/api/v1/cities/DE.json"
+"GR": "api.groupon.de/api/v1/cities/GR.json"
+"IN": "api.groupon.co.in/api/mobile/in/divisions"
+"IE": "api.groupon.de/api/v1/cities/IE.json"
+"IL": "api.groupon.de/api/v1/cities/IL.json"
+"IT": "api.groupon.de/api/v1/cities/IT.json"
+"MY": "api-asia.groupon.de/api/mobile/my/divisions"
+"NL": "api.groupon.de/api/v1/cities/NL.json"
+"NZ": "api-asia.groupon.de/api/mobile/nz/divisions"
+"NO": "api.groupon.de/api/v1/cities/NO.json"
+"PH": "api-asia.groupon.de/api/mobile/ph/divisions"
+"PT": "api.groupon.de/api/v1/cities/PT.json"
+"RO": "api.groupon.de/api/v1/cities/RO.json"
+"SG": "api-asia.groupon.de/api/mobile/sg/divisions"
+"ZA": "api.groupon.de/api/v1/cities/ZA.json"
+"ES": "api.groupon.de/api/v1/cities/ES.json"
+"SE": "api.groupon.de/api/v1/cities/SE.json"
+"CH": "api.groupon.de/api/v1/cities/CH.json"
+"TH": "api-asia.groupon.de/api/mobile/th/divisions"
+"TR": "api.groupon.de/api/v1/cities/TR.json"
+"AE": "api.groupon.de/api/v1/cities/AE.json"
+"UK": "api.groupon.de/api/v1/cities/UK.json"
