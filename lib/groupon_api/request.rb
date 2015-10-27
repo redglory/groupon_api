@@ -2,7 +2,6 @@ require "net/http"
 require "uri"
 require 'json'
 require 'active_support/core_ext/hash/indifferent_access'
-require 'yaml'
 
 module GrouponApi
   class Request
@@ -18,12 +17,13 @@ module GrouponApi
       query_str = query_arr.join('&')
       if endpoint == "countries"
         url_str = "#{protocol}://api.groupon.de/api/v1/#{endpoint}.json"
-      elsif endpoint == "cities"
+      elsif endpoint == "divisions"
         raise ::ArgumentError, 'param :iso_code cannot be nil' if (GrouponApi.config.iso_code.nil? && iso_code.empty?)
         # use iso_code parameter if present else use global GrouponApi.config.iso_code
         iso_code = !iso_code.empty? ? iso_code : GrouponApi.config.iso_code
-        GrouponApi.COUNTRIES = HashWithIndifferentAccess.new(YAML.load(File.read(File.expand_path('../../../config/countries.yml', __FILE__))))
-        country_api_url = COUNTRIES[iso_code]
+        # load all countries
+        countries = HashWithIndifferentAccess.new(YAML.load_file(File.join(File.dirname(__FILE__),"countries.yml")))
+        country_api_url = countries[iso_code]
         url_str = "#{protocol}://#{country_api_url}"
       else
         url_str = "#{protocol}://#{API_BASE}/#{endpoint}.json?#{query_str}"
