@@ -23,25 +23,70 @@ module GrouponApi
         iso_code = !iso_code.empty? ? iso_code : GrouponApi.config.iso_code
         # load all countries
         countries = HashWithIndifferentAccess.new(YAML.load_file(File.join(File.dirname(__FILE__),"countries.yml")))
-        country_api_url = countries[iso_code]
-        url_str = "#{protocol}://#{country_api_url}"
+        if countries.has_key?(iso_code)
+          url_str = "#{protocol}://#{countries[iso_code]}"
+        else
+          url_str = ""
+        end
       else
         url_str = "#{protocol}://#{API_BASE}/#{endpoint}.json?#{query_str}"
       end
       
-      puts "#{__FILE__}:#{__LINE__} url_str: #{url_str}" if GrouponApi.config.debug
-      begin
-        result = Net::HTTP.get(URI.parse(url_str))
-      rescue => e
-        puts "#{__FILE__}:#{__LINE__} [RESCUE]: #{e}" if GrouponApi.config.debug
-        return []
+      # Only process valid API urls
+      if url_str.present?
+        if GrouponApi.config.use_proxy
+  
+          proxy_uri = URI.parse(ENV['http_proxy'])
+          # set proxy variables
+          proxy_user, proxy_pass = proxy_uri.userinfo.split(/:/) if proxy_uri.userinfo
+  
+          uri = URI.parse(url_str)
+  
+          puts "#{__FILE__}:#{__LINE__} url_str: #{url_str}" if GrouponApi.config.debug
+          begin
+            # build http with proxy
+            http = Net::HTTP.start(uri.host, uri.port, proxy_uri.host, proxy_uri.port, proxy_user, proxy_pass, :use_ssl => uri.scheme == 'https')
+            request = Net::HTTP::Get.new(uri.request_uri)
+            # retrieve response
+            response = http.request(request)
+            # Finish HTTP connection.
+            http.finish if http.started?  
+          rescue => e
+            puts "#{__FILE__}:#{__LINE__} [RESCUE]: #{e}" if GrouponApi.config.debug
+            response = e
+          end
+          
+        else
+          puts "#{__FILE__}:#{__LINE__} url_str: #{url_str}" if GrouponApi.config.debug
+          begin
+            response = Net::HTTP.get(URI.parse(url_str))
+          rescue => e
+            puts "#{__FILE__}:#{__LINE__} [RESCUE]: #{e}" if GrouponApi.config.debug
+            response = e 
+          end
+        end
+        
+        # return response as Array of HashWithIndifferentAccess
+        case response
+          when Net::HTTPSuccess
+            json = JSON.parse(response.body)
+            puts "#{__FILE__}:#{__LINE__} json:" if GrouponApi.config.debug
+            puts "#{json}" if GrouponApi.config.debug
+            json
+          when Net::HTTPUnauthorized
+            puts "#{response.message}: username and password set and correct?" if GrouponApi.config.debug
+            {'error' => "#{response.message}: username and password set and correct?"}
+          when Net::HTTPServerError
+            puts "#{response.message}: try again later?" if GrouponApi.config.debug
+            {'error' => "#{response.message}: try again later?"}
+          else
+            puts "#{response.message}" if GrouponApi.config.debug
+            response = {'error' => e.message}
+        end
+      else
+        puts "Countries.yml has no API url for country #{iso_code}! Update it!" if GrouponApi.config.debug
+        return {'error' => "Countries.yml has no API url for country #{iso_code}! Update it!"}
       end
-      
-      # return result as Array of HashWithIndifferentAccess
-      json = JSON.parse(result)
-      puts "#{__FILE__}:#{__LINE__} json:" if GrouponApi.config.debug
-      puts "#{json}" if GrouponApi.config.debug
-      json
     end
 
     #------------------------------------------------------------------------------------

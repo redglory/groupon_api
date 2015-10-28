@@ -23,6 +23,7 @@ module GrouponApi
     config_accessor(:debug){ false }
     config_accessor(:use_int_api){ false }
     config_accessor(:iso_code){ nil }
+    config_accessor(:use_proxy){ false }
     
     #deals
     config_accessor(:deals){ {} }
